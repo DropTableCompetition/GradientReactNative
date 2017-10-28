@@ -1,21 +1,43 @@
 import React, { Component } from 'react';
-import { AppRegistry, View, ScrollView, Text, TouchableHighlight } from 'react-native';
+import { AppRegistry, View, ScrollView, Text, TouchableHighlight, Modal, Button } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import PostInfo from './PostInfo.js';
 
 class Post extends Component{
     constructor(props) {
         super(props);
-        this.state = {user: "noUser", text: "no text", color: "figure this out"}
+        this.state = {modalVisible: false, user: "noUser", text: "no text", color: "figure this out"}
     }
 
      onPressButton(){
         console.warn("this worked");
     }
+    setModalVisible(visible) {
+        this.setState({modalVisible: visible});
+    }
 
     render(){
         return(
+            <View>
+                <Modal
+                    animationType={"slide"}
+                    transparent={false}
+                    visible={this.state.modalVisible}
+                    onRequestClose={() => {this.setModalVisible(!this.state.modalVisible)}}
+                >
+                    <View>
+                    <Button
+                        style = {{}}
+                        title={'close info i guess? il work on this part later'}
+                        color={"#00f355"}
+                        onPress={()=>{
+                            this.setModalVisible(!this.state.modalVisible)
+                        }}/>
+                        <PostInfo color1={this.props.color1} color2={this.props.color2}/>
+                    </View>
+                </Modal>
             <TouchableHighlight onPress={()=>{
-                this.onPressButton()
+                this.setModalVisible()
             }}>
                 <LinearGradient style={{width: 600, height: 234}} colors={[this.props.color1, this.props.color2]} start={{ x: 0, y: 1 }} end={{ x: 1, y: 0 }}>
                     <Text style={{fontSize: 18, textAlign: 'left', margin: 100,width:400}}>
@@ -23,6 +45,7 @@ class Post extends Component{
                     </Text>
                 </LinearGradient>
             </TouchableHighlight>
+            </View>
         )
     }
 }
