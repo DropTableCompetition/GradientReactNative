@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Text, View,Button, StyleSheet} from 'react-native';
+import {AppRegistry, Text,Touchable, View,Button, StyleSheet} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 
