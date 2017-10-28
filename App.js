@@ -2,16 +2,16 @@ import React, { Component } from 'react';
 import {AppRegistry, Text, Image, View, StyleSheet,TextInput, ListView, Alert,Button,Touchable,ScrollView} from 'react-native';
 import { TabNavigator } from "react-navigation";
 import mainPage from './mainPage.js';
+import PostPage from './PostPage.js';
 import Profile from './Profile.js';
-import allPost from './AllPost.js';
 //import socket from './utility/socketManager.js'
 var poster = require('./Poster.js');
 
 
 const MainScreenNavigator = TabNavigator({
     main: { screen: mainPage },
-    All: { screen: allPost },
-    Profile: { screen: Profile},
+    Profile: { screen: Profile },
+    PostPage: { screen: PostPage},
 },  {tabBarOptions: {
     activeTintColor: '#fefdff',
     activeBackgroundColor: '#8e46c9',
