@@ -1,0 +1,3 @@
+rootProject.name = 'GradientReactNative'
+
+include ':app'
