@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { AppRegistry, View, ScrollView, Text } from 'react-native';
-
+import LinearGradient from 'react-native-linear-gradient';
 
 class Post extends Component{
     constructor(props) {
@@ -10,12 +10,12 @@ class Post extends Component{
 
     render(){
         return(
-            <View style={{width: 600, height: 234}}>
-                <View style={{flex: 1, backgroundColor: this.props.backgroundColor}}>
-                    <Text style={{fontSize: 18, textAlign: 'left', margin: 100,width:400}}>this is a test</Text>
-                    {/*fontSize: 18, margin: 100, width: 300*/}
-                </View>
-            </View>
+                <LinearGradient style={{width: 600, height: 234}} colors={[this.props.color1, this.props.color2]}>
+                    <Text style={{fontSize: 18, textAlign: 'left', margin: 100,width:400}}>
+                        this is a test
+                    </Text>
+                </LinearGradient>
+
         )
     }
 }
@@ -25,9 +25,9 @@ export default class FlexDimensionsBasics extends Component {
     render() {
         return (
             <ScrollView>
-                <Post backgroundColor='powderblue'/>
-                <Post backgroundColor='steelblue'/>
-                <Post backgroundColor='skyblue'/>
+                <Post color1='#4c669f' color2='#ff001d'/>
+                <Post color1='#ff001d' color2='#4c669f'/>
+                <Post color1='#4c669f' color2='#ff001d'/>
             </ScrollView>
         );
     }

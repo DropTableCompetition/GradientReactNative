@@ -9,9 +9,9 @@ var poster = require('./Poster.js');
 
 
 const MainScreenNavigator = TabNavigator({
-    Profile: { screen: Profile},
     main: { screen: mainPage },
     All: { screen: allPost },
+    Profile: { screen: Profile},
 },  {tabBarOptions: {
     activeTintColor: '#fefdff',
     activeBackgroundColor: '#8e46c9',
