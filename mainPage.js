@@ -4,7 +4,7 @@ import LinearGradient from 'react-native-linear-gradient';
 var poster = require('./Poster.js');
 import PostInfo from './PostInfo.js';
 var Color = require('color');
-
+var Post = require('./Gradient.js')
 
 const styles = StyleSheet.create({
     title: {
@@ -21,52 +21,6 @@ const styles = StyleSheet.create({
 });
 
 
-class Post extends Component{
-    constructor(props) {
-        super(props);
-        this.state = {modalVisible: false, user: "noUser", text: "no text", color: "figure this out"}
-    }
-
-     onPressButton(){
-        console.warn("this worked");
-    }
-    setModalVisible(visible) {
-        this.setState({modalVisible: visible});
-    }
-
-    render(){
-        return(
-            <View>
-                <Modal
-                    animationType={"slide"}
-                    transparent={false}
-                    visible={this.state.modalVisible}
-                    onRequestClose={() => {this.setModalVisible(!this.state.modalVisible)}}
-                >
-                    <View>
-                    <Button
-                        style = {{}}
-                        title={'close info i guess? il work on this part later'}
-                        color={"#00f355"}
-                        onPress={()=>{
-                            this.setModalVisible(!this.state.modalVisible)
-                        }}/>
-                        <PostInfo color1={this.props.color1} color2={this.props.color2}/>
-                    </View>
-                </Modal>
-            <TouchableHighlight onPress={()=>{
-                this.setModalVisible()
-            }}>
-                <LinearGradient style={{width: 600, height: 234}} colors={[this.props.color1, this.props.color2]} start={{ x: 0, y: 1 }} end={{ x: 1, y: 0 }}>
-                    <Text style={{fontSize: 18, color: 'white' , textAlign: 'left', margin: 100,width:400}}>
-                        {this.props.text}
-                    </Text>
-                </LinearGradient>
-            </TouchableHighlight>
-            </View>
-        )
-    }
-}
 
 
 export default class FlexDimensionsBasics extends Component {
@@ -86,7 +40,7 @@ export default class FlexDimensionsBasics extends Component {
             var color = "#4286f4"
             return (
                 <View key={b.key}>
-                    <Post color1={String(Color(b.colorA))} color2={String(Color(b.colorB))} text = {b.text}/>
+                    <Post color1={String(Color(b.colorA))} color2={String(Color(b.colorB))} text = {b.text} author = {b.username}/>
                 </View>
             )
         });

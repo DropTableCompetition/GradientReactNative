@@ -117,6 +117,14 @@ exports.SendLocation = function(latitude,longitude){
         body: "username="+username+"&latitude="+latitude+"&longitude="+longitude
     })
 }
+
+exports.GetAllPost = function(){
+    return fetch('http://'+url+":"+port+'/gradient/get_all_posts.php',{
+        method: 'POST',
+        headers: { 'Accept': 'application/json','Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'},
+        body: "username"
+    })
+}
 //"session_id="+key+"&text="+text+"&colorA="+colorA+"&colorB="+colorB
 
 //* this post request works
