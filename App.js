@@ -8,6 +8,7 @@ url = 'www.programminginitiative.com'
 var password;
 port ='';
 key = "no key";
+username ="no username"
 
 class LoginPage extends Component {
     constructor(props) {
@@ -43,6 +44,7 @@ class LoginPage extends Component {
                 <Button title={"login"}
                         color={"#ae59f3"}
                         onPress={()=>{
+                            username = this.state.user;
                             const {navigate} = this.props.navigation;
                             poster.Login(this.state.user,this.state.password)
                                 .then(function(result){

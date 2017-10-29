@@ -93,13 +93,21 @@ exports.Login = function(username,password){
     })
 }
 
-exports.UploadPost = function (text,colorA,colorB) {
+exports.UploadPost = function (text) {
     return fetch('http://'+url+":"+port+'/gradient/upload_post.php',{
         method: 'POST',
         headers: { 'Accept': 'application/json','Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'},
-        body: "session_id="+key+"&text="+text+"&colorA="+colorA+"&colorB="+colorB
+        body: "session_id="+key+"&text="+text
     })
 
+}
+//http://www.programminginitiative.com/gradient/get_feed.php
+exports.GetFeed = function(){
+    return fetch('http://'+url+":"+port+'/gradient/get_feed.php',{
+        method: 'POST',
+        headers: { 'Accept': 'application/json','Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'},
+        body: "username="+username
+    })
 }
 //"session_id="+key+"&text="+text+"&colorA="+colorA+"&colorB="+colorB
 

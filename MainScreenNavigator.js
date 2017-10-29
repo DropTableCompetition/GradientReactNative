@@ -9,8 +9,8 @@ var poster = require('./Poster.js');
 
 
 const MainNav = TabNavigator({
-    PostPage: { screen: PostPage},
     main: { screen: mainPage },
+    PostPage: { screen: PostPage},
     Profile: { screen: Profile },
 },  {tabBarOptions: {
     activeTintColor: '#fefdff',

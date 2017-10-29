@@ -65,17 +65,15 @@ class Post extends React.Component {
                     <Button title={"post"}
                             color={"#ae59f3"}
                             onPress={()=> {
-                                this.setModalVisible(!this.state.modalVisible)
-                                poster.UploadPost(this.state.body,"#ae59f3","#00db00")
+                                this.setModalVisible(!this.state.modalVisible);
+                                poster.UploadPost(this.state.body)
                                     .then(function(result){
-                                        console.warn(result._bodyInit)
+                                        //console.warn(result._bodyInit)
                                     })
                                     .catch(function(err){
                                         console.warn(err)
                                     })
                             }}/>
-
-
                 </View>
 
             </View>
