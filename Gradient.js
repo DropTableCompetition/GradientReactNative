@@ -28,7 +28,7 @@ class Post extends Component{
                     <View>
                         <Button
                             style = {{}}
-                            title={'close info i guess? il work on this part later'}
+                            title={'back to other gradients'}
                             color={"#00f355"}
                             onPress={()=>{
                                 this.setModalVisible(!this.state.modalVisible)
