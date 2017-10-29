@@ -3,6 +3,7 @@ import { AppRegistry, View, ScrollView, StyleSheet, Text, TouchableHighlight, Mo
 import LinearGradient from 'react-native-linear-gradient';
 var poster = require('./Poster.js');
 import PostInfo from './PostInfo.js';
+var Color = require('color');
 
 
 const styles = StyleSheet.create({
@@ -57,7 +58,7 @@ class Post extends Component{
                 this.setModalVisible()
             }}>
                 <LinearGradient style={{width: 600, height: 234}} colors={[this.props.color1, this.props.color2]} start={{ x: 0, y: 1 }} end={{ x: 1, y: 0 }}>
-                    <Text style={{fontSize: 18, textAlign: 'left', margin: 100,width:400}}>
+                    <Text style={{fontSize: 18, color: 'white' , textAlign: 'left', margin: 100,width:400}}>
                         {this.props.text}
                     </Text>
                 </LinearGradient>
@@ -80,23 +81,23 @@ export default class FlexDimensionsBasics extends Component {
     }
 
     render() {
+        //console.disableYellowBox = true; //TERIBLE SOLUTION, PLEASE FOR THE LOVE OF GOOD CODING PRACTICES FIND A BETTER SOLUTION!
         const renderedPosts =  this.state.results.map(b => {
             var color = "#4286f4"
             return (
                 <View key={b.key}>
-                    <Post color1="#4286f4" color2="#4286f4" text = {b.text}/>
+                    <Post color1={String(Color(b.colorA))} color2={String(Color(b.colorB))} text = {b.text}/>
                 </View>
             )
         });
         return (
             <ScrollView>
                 {renderedPosts}
-                <Post color1="#4286f4" color2="#4286f4" text ={this.state.results[0].text}/>
             </ScrollView>
         )
 
     }
-}2
+}
 
 function getAllPost(_this){
     data = {

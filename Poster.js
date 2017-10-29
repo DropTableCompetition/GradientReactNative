@@ -109,6 +109,14 @@ exports.GetFeed = function(){
         body: "username="+username
     })
 }
+
+exports.SendLocation = function(latitude,longitude){
+    return fetch('http://'+url+":"+port+'/gradient/swap_geographical.php',{
+        method: 'POST',
+        headers: { 'Accept': 'application/json','Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'},
+        body: "username="+username+"&latitude="+latitude+"&longitude="+longitude
+    })
+}
 //"session_id="+key+"&text="+text+"&colorA="+colorA+"&colorB="+colorB
 
 //* this post request works
