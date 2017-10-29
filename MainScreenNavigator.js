@@ -9,9 +9,9 @@ var poster = require('./Poster.js');
 
 
 const MainNav = TabNavigator({
+    PostPage: { screen: PostPage},
     main: { screen: mainPage },
     Profile: { screen: Profile },
-    PostPage: { screen: PostPage},
 },  {tabBarOptions: {
     activeTintColor: '#fefdff',
     activeBackgroundColor: '#8e46c9',
@@ -27,6 +27,8 @@ const MainNav = TabNavigator({
 
 MainNav.navigationOptions = {
     title: 'My Chats',
+    screen: 'Profile'
+
 };
 
 module.exports = MainNav

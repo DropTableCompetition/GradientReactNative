@@ -6,7 +6,7 @@ var poster = require('./Poster.js');
 
 url = 'www.programminginitiative.com'
 var password;
-port ='3000';
+port ='';
 key = "no key";
 
 class LoginPage extends Component {
@@ -44,36 +44,15 @@ class LoginPage extends Component {
                         color={"#ae59f3"}
                         onPress={()=>{
                             const {navigate} = this.props.navigation;
-                            //navigate('Main')
-                            /*
-                            poster.login(this.state.user,this.state.password, 'true')
+                            poster.Login(this.state.user,this.state.password)
                                 .then(function(result){
-                                    console.warn(result.text());
+                                    if(result._bodyInit !="Incorrect username/password") {
+                                        key = JSON.parse(result._bodyInit).session_id
+                                        navigate("Main")
+                                    }else{
+                                        console.warn("incorrect user or password")//change this later
+                                    }
                                 })
-                                */
-                            console.warn("button pressed")
-                            console.log("fijewfijewfijewf");
-                            poster.Test2()
-                                .then(function(result){
-                                    console.warn(result._bodyInit);
-                                    console.log(result);
-                                })
-                            /*
-                            var _this = this;
-                            logged = "thing";
-                            poster.login(this.state.user,this.state.password,'true')
-                                .then(function (result) {
-                                    logged = result._bodyInit;
-                                    key = logged;
-                                    _this.setState({user:_this.state.user,password:_this.state.password,sessionKey:logged})
-                                    return logged
-                                }).then(function (result) {
-                                if(result != "bad Login") {
-                                    username =_this.state.user
-                                    start(navigate)
-                                }
-                            });
-                            */
                         }
                         }/>
                 <Text>{(this.state.sessionKey).toString()}</Text>
@@ -104,7 +83,7 @@ const SimpleApp = StackNavigator({
     Main: { screen: MainNav },
     },
     { headerMode: 'none' }
-);
+)
 
 module.exports = SimpleApp;
 

@@ -16,7 +16,7 @@ class Post extends React.Component {
     constructor(props) {
         super(props);
         //this.state = {post: '{title:"thing"'};
-        this.state = {modalVisible: false, title: 'disadefault',tags: 'ok?',question: 'nothing here'};
+        this.state = {modalVisible: false, body: 'nothing here'};
         //this.modalVisible = true;
     }
     setModalVisible(visible) {
@@ -55,33 +55,24 @@ class Post extends React.Component {
                 <View style = {{
                     backgroundColor: '#fffdfe',
                 }}>
-                    <TextInput
-                        style={{height: 40}}
-                        placeholder="Post Title!"
-                        defaultValue={""}
-                        onChangeText={(text) => (this.state.title=text)}
-                    />
 
                     <TextInput
                         style={{height: 100}}
                         placeholder="Your Post goes here"
                         defaultValue={""}
-                        onChangeText={(text) => (this.state.question=text)}
+                        onChangeText={(text) => (this.state.body=text)}
                     />
                     <Button title={"post"}
                             color={"#ae59f3"}
                             onPress={()=> {
                                 this.setModalVisible(!this.state.modalVisible)
-                                let tags = new Array()
-                                tags.push('mobile')
-                                poster.sendPost('phoneQuery',{
-                                    username:this.state.username,
-                                    title:this.state.title,
-                                    content:this.state.question,
-                                    tags:tags,
-                                    date:new Date(),
-                                    url:'url',
-                                })
+                                poster.UploadPost(this.state.body,"#ae59f3","#00db00")
+                                    .then(function(result){
+                                        console.warn(result._bodyInit)
+                                    })
+                                    .catch(function(err){
+                                        console.warn(err)
+                                    })
                             }}/>
 
 

@@ -20,21 +20,6 @@ exports.AllPage = function (key) {
     //.catch((error)=> {console.warn("Error: ",result); return result})
 }
 
-exports.login = function(username,password){
-    //console.warn("username: "+username + "password "+password);
-    return fetch('http://'+url+':'+port+'/gradient/login.php', {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-        },
-        body:{
-            username: username,
-            password: password,
-        }
-    })
-
-}
 
 exports.getAllPost = function(key,username){
     return fetch('http://'+url+':'+port+'/phoneGetAllUserPost', {
@@ -85,38 +70,38 @@ exports.Test = function () {
 }*/
 
 exports.Test2 = function(){
-    return fetch('http://www.programminginitiative.com/gradient/new_account.php', {
+    return fetch('http://'+url+":"+port+'/gradient/new_account.php', {
         method: 'POST',
         headers: { 'Accept': 'application/json','Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'},
         body: "username=coffee24&password=password"
     })
 }
 
-
-exports.sendPost = function () {
-    fetch('http://localhost:3000/robotData/',{
+exports.SignUp = function(username,password){
+    return fetch('http://'+url+":"+port+'/gradient/new_account.php', {
         method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-        },
-        body: {
-            name: 'yourValue',
-            password: 'yourOtherValue'
-        }
+        headers: { 'Accept': 'application/json','Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'},
+        body: "username="+username+"&password="+password
     })
-        .then((response) => response.json())
-        .then((responseData) => {
-            console.log(JSON.stringify(responseData.body))
-        })
-        .catch((err)=> {
-            console.log('Some errors occured');
-            console.log(err);
-        })
-        .done();
-
 }
 
+exports.Login = function(username,password){
+    return fetch('http://'+url+":"+port+'/gradient/login.php', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json','Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'},
+        body: "username="+username+"&password="+password
+    })
+}
+
+exports.UploadPost = function (text,colorA,colorB) {
+    return fetch('http://'+url+":"+port+'/gradient/upload_post.php',{
+        method: 'POST',
+        headers: { 'Accept': 'application/json','Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'},
+        body: "session_id="+key+"&text="+text+"&colorA="+colorA+"&colorB="+colorB
+    })
+
+}
+//"session_id="+key+"&text="+text+"&colorA="+colorA+"&colorB="+colorB
 
 //* this post request works
 exports.testConnection =  function() {
