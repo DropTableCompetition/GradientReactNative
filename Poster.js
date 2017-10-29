@@ -2,6 +2,8 @@
  * Created by diamondrubix on 5/29/17.
  */
 //url = '172.18.100.133' //home
+
+
 exports.AllPage = function (key) {
     return fetch('http://'+url+':'+port+'/phoneGetPost',
         {
@@ -19,17 +21,17 @@ exports.AllPage = function (key) {
 }
 
 exports.login = function(username,password){
-    return fetch('http://'+url+':'+port+'/phoneloginvalidate', {
+    //console.warn("username: "+username + "password "+password);
+    return fetch('http://'+url+':'+port+'/gradient/login.php', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
+        body:{
             username: username,
             password: password,
-            logged: "true"
-        })
+        }
     })
 
 }
@@ -67,18 +69,54 @@ exports.getPostAnswers = function(key,url){
 
 }
 
+/*
+exports.Test = function () {
+    return fetch('http://www.programminginitiative.com/gradient/new_account.php', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+        },
+        body: JSON.stringify({
+            username: 'coffee100',
+            password: 'test',
+        })
+    })
+}*/
 
-exports.sendPost = function (location,data) {
-    fetch('http://'+url+':'+port+'/'+location+'/',{
+exports.Test2 = function(){
+    return fetch('http://www.programminginitiative.com/gradient/new_account.php', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json','Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'},
+        body: "username=coffee24&password=password"
+    })
+}
+
+
+exports.sendPost = function () {
+    fetch('http://localhost:3000/robotData/',{
         method: 'POST',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data)
+        body: {
+            name: 'yourValue',
+            password: 'yourOtherValue'
+        }
     })
+        .then((response) => response.json())
+        .then((responseData) => {
+            console.log(JSON.stringify(responseData.body))
+        })
+        .catch((err)=> {
+            console.log('Some errors occured');
+            console.log(err);
+        })
+        .done();
 
 }
+
 
 //* this post request works
 exports.testConnection =  function() {
